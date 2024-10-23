@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cad0vds1xx7st"]
+
+[ext_resource type="Script" path="res://Cenas/ui.gd" id="1_fh4qx"]
+[ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://Assets Super Mario Bros/Fonts/font.ttf" id="2_lfnr3"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fh4qx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lfnr3")
+theme_override_font_sizes/font_size = 20
+text = "SCORE: 00000"
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lfnr3")
+theme_override_font_sizes/font_size = 20
+text = "COINS: 00000"

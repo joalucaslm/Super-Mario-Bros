@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3bjwrrb1vjl5"]
+
+[ext_resource type="Texture2D" uid="uid://b5sqfy41h20ks" path="res://Assets Super Mario Bros/Sprites/PipeTop.png" id="1_d0v07"]
+[ext_resource type="Script" path="res://Cenas/Pipe.gd" id="1_g8ddo"]
+[ext_resource type="Texture2D" uid="uid://cdp0d1a4cvakq" path="res://Assets Super Mario Bros/Sprites/PipeBottom.png" id="2_oh88v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo3b5"]
+size = Vector2(32, 32)
+
+[node name="Pipe" type="StaticBody2D"]
+z_index = -1
+texture_repeat = 2
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_g8ddo")
+
+[node name="PipeTopSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_d0v07")
+
+[node name="PipeBodySprite" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("2_oh88v")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_eo3b5")

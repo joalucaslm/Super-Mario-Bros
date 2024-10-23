@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkygsjxu151ps"]
+
+[ext_resource type="PackedScene" uid="uid://cfg8ulwuq7l2" path="res://Cenas/Pipe_connector.tscn" id="1_7keaa"]
+[ext_resource type="PackedScene" uid="uid://cad0vds1xx7st" path="res://Cenas/ui.tscn" id="2_ciqbi"]
+[ext_resource type="PackedScene" uid="uid://bnqdph6hw0te7" path="res://Cenas/MysteryBox.tscn" id="2_uonfu"]
+[ext_resource type="PackedScene" uid="uid://bscl71y8xnml2" path="res://Cenas/Player.tscn" id="2_vwt85"]
+[ext_resource type="Texture2D" uid="uid://dbhkvad8kmca" path="res://Assets Super Mario Bros/Sprites/UndergroundBlock.png" id="3_6n0h4"]
+[ext_resource type="Script" path="res://Cenas/LevelManager.gd" id="3_ywxpk"]
+[ext_resource type="PackedScene" uid="uid://c3bjwrrb1vjl5" path="res://Cenas/Pipe.tscn" id="6_k3ptu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqomu"]
+texture = ExtResource("3_6n0h4")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -2.5, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ioean"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_sqomu")
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+offset_left = -216.0
+offset_top = -121.0
+offset_right = 234.0
+offset_bottom = 137.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="MysteryBox2" parent="ColorRect" instance=ExtResource("2_uonfu")]
+position = Vector2(240, 39)
+bonus_type = 0
+
+[node name="MysteryBox2" parent="ColorRect/MysteryBox2" instance=ExtResource("2_uonfu")]
+position = Vector2(37, 90)
+bonus_type = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1.70703, -0.282543)
+offset = Vector2(2.75, 2.75)
+zoom = Vector2(3, 3)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ioean")
+format = 2
+layer_0/tile_data = PackedInt32Array(393227, 0, 0, 393226, 0, 0, 393225, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 393221, 0, 0, 393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 393216, 0, 0, 458751, 0, 0, 458750, 0, 0, 458749, 0, 0, 458748, 0, 0, 458747, 0, 0, 458746, 0, 0, 458745, 0, 0, 458744, 0, 0, 458743, 0, 0, 458742, 0, 0, 458741, 0, 0, 458740, 0, 0, 393204, 0, 0, 393205, 0, 0, 327691, 0, 0, 327690, 0, 0, 327689, 0, 0, 327688, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 393215, 0, 0, 393214, 0, 0, 393213, 0, 0, 393212, 0, 0, 393211, 0, 0, 393210, 0, 0, 393209, 0, 0, 393208, 0, 0, 393207, 0, 0, 393206, 0, 0, 393228, 0, 0, 327692, 0, 0, 327668, 0, 0, 262132, 0, 0, 196596, 0, 0, 131060, 0, 0, 65524, 0, 0, -12, 0, 0, -65548, 0, 0, -131084, 0, 0, -196620, 0, 0, -262156, 0, 0, -327692, 0, 0, -393228, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458744, 0, 0, -458745, 0, 0, -458746, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_vwt85")]
+position = Vector2(-153, -87)
+
+[node name="UI" parent="." instance=ExtResource("2_ciqbi")]
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ui", "player") groups=["level_manager"]]
+script = ExtResource("3_ywxpk")
+ui = NodePath("../UI")
+player = NodePath("../Player")
+
+[node name="PipeConnector" parent="." instance=ExtResource("1_7keaa")]
+position = Vector2(163, 56)
+
+[node name="Pipe" parent="." instance=ExtResource("6_k3ptu")]
+position = Vector2(179, -100)
+height = 160
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="MysteryBox" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(-65, 9)
+bonus_type = 0
+
+[node name="MysteryBox2" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(-112, 32)
+bonus_type = 0
+
+[node name="MysteryBox3" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(-53, -80)
+bonus_type = 0
+
+[node name="MysteryBox4" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(-111, -50)
+bonus_type = 0
+
+[node name="MysteryBox5" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(-8, -15)
+bonus_type = 0
+
+[node name="MysteryBox6" parent="Blocks" instance=ExtResource("2_uonfu")]
+position = Vector2(100, -41)
+bonus_type = 0

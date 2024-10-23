@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cutfjeqx0wisg"]
+
+[ext_resource type="Texture2D" uid="uid://d7iqe7ort45q" path="res://Assets Super Mario Bros/Sprites/Coin1.png" id="1_1sycw"]
+[ext_resource type="Texture2D" uid="uid://boarwxnd8uqy8" path="res://Assets Super Mario Bros/Sprites/Coin2.png" id="2_lc6ro"]
+[ext_resource type="Texture2D" uid="uid://rc8mt153lydh" path="res://Assets Super Mario Bros/Sprites/Coin3.png" id="3_dlnlo"]
+[ext_resource type="Texture2D" uid="uid://wn4dcjfa6g3m" path="res://Assets Super Mario Bros/Sprites/Coin4.png" id="4_mru6l"]
+[ext_resource type="Script" path="res://Cenas/Coin.gd" id="5_mu5s5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx28e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1sycw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lc6ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dlnlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mru6l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Coin" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_tx28e")
+autoplay = "default"
+script = ExtResource("5_mu5s5")
